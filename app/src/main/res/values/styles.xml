@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    
+    <style name="TextView_Title">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+    </style>
+
+    <style name="ImageView_AcctionBar">
+        <item name="android:clickable">true</item>
+        <item name="android:tint">@color/colorBlack</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="TextView_Keyboard_Calcutor">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/background_keyboard_function</item>
+    </style>
+
+    <style name="TextView_Keyboard_Calcutor_Fill">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="TextView_Keyboard_Calcutor_Fill_Opera">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/background_keyboard_opera</item>
+    </style>
+
+    <style name="TextView_Keyboard_Calcutor_Fill_Number">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/nunito_semibold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/background_keyboard_number</item>
+    </style>
+</resources>

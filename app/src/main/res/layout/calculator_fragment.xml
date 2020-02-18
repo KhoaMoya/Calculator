@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.khoa.calculator.viewmodel.CalculatorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack5"
+        tools:context=".calculator.view.CalculatorFragment">
+
+        <ImageView
+            android:id="@+id/img_clear_history"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_white_fab"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:onClick="@{()->viewmodel.onClickClear()}"
+            android:padding="12dp"
+            android:src="@drawable/ic_remove"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_history"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/background_result"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/item_calculator">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/background_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack5"
+            app:layout_constraintBottom_toTopOf="@id/layout_keyboard"
+            app:layout_constraintTop_toBottomOf="@id/recycler_history">
+
+            <TextView
+                android:id="@+id/txt_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="end|bottom"
+                android:padding="5dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorBlack"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="center"
+            android:text="@{viewmodel.mNotification}"
+            android:textColor="@color/colorBlack50"
+            app:layout_constraintBottom_toTopOf="@id/layout_keyboard" />
+
+        <TextView
+            android:id="@+id/txt_set_flag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_regular"
+            android:gravity="end"
+            android:text="SET"
+            android:visibility="@{viewmodel.SET_FLAG}"
+            android:textSize="13sp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toTopOf="@id/layout_keyboard" />
+
+        <LinearLayout
+            android:id="@+id/layout_keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!--        row 1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_ac"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:textColor="@color/colorWhite"
+                    android:text="AC" />
+                <TextView
+                    android:id="@+id/key_sin"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="sin" />
+
+                <TextView
+                    android:id="@+id/key_cos"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="cos" />
+
+                <TextView
+                    android:id="@+id/key_tan"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="tan" />
+
+                <TextView
+                    android:id="@+id/key_sqrt"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="sqrt" />
+
+                <TextView
+                    android:id="@+id/key_pow"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="^" />
+
+                <ImageView
+                    android:id="@+id/key_delete"
+                    style="@style/TextView_Keyboard_Calcutor"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_backspace"
+                    android:onClick="@{()->viewmodel.onClickDelete()}"
+                    android:src="@drawable/ic_backspace"
+                    android:text="Del"
+                    android:textColor="@color/colorWhite"
+                    android:tint="@color/colorWhite" />
+            </LinearLayout>
+
+            <!--        row 2-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="1"
+                    />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="2"
+                    />
+
+                <TextView
+                    android:id="@+id/key_A"
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="3" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_key"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="A" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_key"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="B" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_key"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="C" />
+
+            </LinearLayout>
+
+            <!--        row 3-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="4" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="5" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="6" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_bracket"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="(" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="+" />
+
+                <TextView
+                    android:id="@+id/key_sub"
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="-" />
+
+            </LinearLayout>
+
+            <!--            row 4-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="7" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="8" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="9" />
+
+                <TextView
+                    android:id="@+id/key_7"
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_keyboard_bracket"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text=")" />
+
+                <TextView
+                    android:id="@+id/key_mul"
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="*" />
+
+                <TextView
+                    android:id="@+id/key_div"
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Opera"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="/" />
+
+            </LinearLayout>
+            <!--         row 5-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="%" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="0" />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="." />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="SET"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    style="@style/TextView_Keyboard_Calcutor_Fill_Number"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="ANS"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/key_result"
+                    style="@style/TextView_Keyboard_Calcutor_Fill"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bankground_keyboard_result"
+                    android:fontFamily="@font/nunito_bold"
+                    android:onClick='@{(view)->viewmodel.addToNodeList(view)}'
+                    android:text="="
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
